@@ -31,7 +31,7 @@ public class VOR {
 	 * Give this VOR a new input signal, updates calculated values and stationCode.
 	 * @param radial The radial input from pilot
 	 * @param stationCode Morse code of the station where this signal came from.
-	 * @param quality True = good signal, false = bad signal
+	 * @param quality Either "good" or "bad"
 	 */
 	public void newSignal(int radial, int stationCode, String quality){
 		this.stationRad = radial; 
