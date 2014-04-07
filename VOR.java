@@ -1,6 +1,6 @@
 /**
  * Representation of a VOR.  With each new radio signal, calculated values 
- * are stored as variables that can be accessed from another class.
+ * are updated and can be accessed from another class.
  * 
  */
 public class VOR {
