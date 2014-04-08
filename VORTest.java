@@ -9,13 +9,4 @@ public class VORTest {
 	public void testNewSignal() {
 		fail("Not yet implemented");
 	}
-	
-	public void testCalcRadial() {
-		fail("Not yet implemented");
-	}
-	
-	public void testCalcDirection(){
-		fail("Not yet implemented");
-	}
-
 }
