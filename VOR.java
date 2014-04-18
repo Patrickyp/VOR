@@ -53,6 +53,9 @@ public class VOR {
 		if(deflect > 90){
 			deflect = 180 - deflect;
 		}
+		if(deflect == 0){
+			this.side = 0;
+		}
 		return deflect;		
 	}
 	
