@@ -44,7 +44,7 @@ public class VOR {
 	}
 	
 	/**
-	 * Helper method, calculates the deflection of the bar/needle from center,
+	 * Calculates the deflection of the bar/needle from center,
 	 * @return negative = towards left, positive = towards right, 0 = centered
 	 */
 	private int calcDeflection(){
