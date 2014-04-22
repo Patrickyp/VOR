@@ -36,7 +36,7 @@ public class VOR {
 	public void newSignal(int radial, int stationCode, String quality, int intendedRad){
 		this.stationRad = radial; 
 		this.stationCode = stationCode; //irrelevant for now
-		this.sigQuality = quality;
+		this.sigQuality = quality; //irrelevant for now
 		this.pilotRad = intendedRad;
 		//update calculated values
 		this.direction = calcToFrom(); //to, from or red
