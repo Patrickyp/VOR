@@ -13,6 +13,7 @@ public class Radio{
     }
 
     public int radial() {
+    	
         return this.radial;
     }
     
@@ -28,6 +29,15 @@ public class Radio{
     }
     
     public boolean signal_status() {
+    	if(radial == 90) {
+    		signal = false;
+    	}
+    	// Change later.
+    	else if(radial == 0) {
+    		signal = false;
+    	}
+    	else
+    		signal = true;
         return this.signal;
     }
     
