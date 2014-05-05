@@ -39,6 +39,10 @@ public class Radio {
 		return (int)(Math.random() * (max - min + 1)) + min;
 	}
 	
+	/**
+	 * Determines if you are currently over radial station 
+	 **/
+	 
 	private void gen_Random_OverStation() {
 		this.signal = (gen_RandomInt(0, 23) == 0);
 	}
