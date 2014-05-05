@@ -18,12 +18,7 @@ public class Radio{
         this.radial = random.nextInt(360);
     }
 
-    public int getRadial() {
-    	
-        return this.radial;
-    }
-    
-    public String get_Station() {
+    public String generate_Station() {
         int temp = 0;
         sb = new StringBuilder();
     	for(int i = 0; i < 3; i++) {
@@ -34,25 +29,24 @@ public class Radio{
         return this.code;
     }
     
+    public void reset() {
+        generate_Radial();
+        generate_Station();
+        //over_Station(); Implement in another class.
+    }
+    
+    public int getRadial() {
+    	
+        return this.radial;
+    }
+    
+    
     public String get_Station() {
         return station;
     }
     
     public boolean over_Station() {
         return overstation;
-    }
-    
-    public boolean signal_status() {
-    	if(radial == 90) {
-    		signal = false;
-    	}
-    	// Change later.
-    	else if(radial == 0) {
-    		signal = false;
-    	}
-    	else
-    		signal = true;
-        return this.signal;
     }
     
 }
