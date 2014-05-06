@@ -186,17 +186,25 @@ class meter extends JPanel{
 		//draw TO FROM
 		if(global.dir.equals("TO")){
 			g.drawString("TO", 280, 170);
+			
+			g.drawString("Signal: GOOD", 250, 450);
 		}
 		if(global.dir.equals("FROM")){
 			g.drawString("FR", 280, 260);
+			
+			g.drawString("Signal: GOOD", 250, 450);
 		}
 		if(global.dir.equals("RED")){
 			g.drawString("TO", 280, 170);
 			g.drawString("FR", 280, 260);
+			
+
+			g.drawString("Signal: BAD", 250, 450);
 		}
 		
 		//draw stationID (moving)
-		g.drawString("Station ID: " + global.ID, 180, 450);
+		//g.drawString("Station ID: " + global.ID, 180, 450);
+		g.drawString("Station ID: " + global.ID, 100, 450);
 		
 		//draw the outer markers (moving)
 		for(int x = 0; x <= 360; x+= 15){
