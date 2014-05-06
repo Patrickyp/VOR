@@ -6,19 +6,19 @@ public class VOR {
 	
 	/* radio inputs, */
 	
-	int stationRad; 
+	double stationRad; 
 	String sigQuality; //ignore for now
 	int stationCode;  //ignore for now
 	
 	/* pilot/GUI input */
 	
-	int pilotRad; 
+	double pilotRad; 
 	
 	/* Calculated values, updated with every new signal*/
 	
 	String direction = ""; //either "to"/"from"/"bad"
-	int degOffset; //number of degrees from intendedRad
-	int side; //which side is the needle tilting, -1 = left, 1 = right
+	double degOffset; //number of degrees from doubleendedRad
+	double side; //which side is the needle tilting, -1 = left, 1 = right
 	
 	/**
 	 * Constructor, create a new VOR object
@@ -31,24 +31,30 @@ public class VOR {
 	 * @param radial The radial input from radio.
 	 * @param stationCode Station ID code.
 	 * @param quality True = good signal, false = bad signal
-	 * @param intendedRad The radial from pilot.
+	 * @param doubleendedRad The radial from pilot.
 	 */
-	public void newSignal(int radial, int stationCode, String quality, int intendedRad){
+	public void newSignal(double radial, int stationCode, String quality, double doubleendedRad){
 		this.stationRad = radial; 
 		this.stationCode = stationCode; //irrelevant for now
-		this.sigQuality = quality; //irrelevant for now
-		this.pilotRad = intendedRad;
+		this.sigQuality = quality;
+		this.pilotRad = doubleendedRad;
 		//update calculated values
 		this.direction = calcToFrom(); //to, from or red
-		this.degOffset = calcDeflection(); //needle centered, or tilted?
+		double degOff = calcDeflection();
+		if(degOff > 10){
+			this.degOffset = 10;
+		}
+		else{
+			this.degOffset = degOff;
+		}
 	}
 	
 	/**
-	 * Calculates the deflection of the bar/needle from center,
+	 * Helper method, calculates the deflection of the bar/needle from center,
 	 * @return negative = towards left, positive = towards right, 0 = centered
 	 */
-	private int calcDeflection(){
-		int deflect = findDistance(pilotRad, stationRad, true);
+	private double calcDeflection(){
+		double deflect = findDistance(pilotRad, stationRad, true);
 		//closer to opposite side of pilotRad, calculate deflection from there
 		if(deflect > 90){
 			deflect = 180 - deflect;
@@ -64,6 +70,9 @@ public class VOR {
 	 * @return
 	 */
 	private String calcToFrom(){
+		if(this.sigQuality.equals("bad")){
+			return "RED";
+		}
 		//if radial is within 90degrees of pilot radial, direction is "from"
 		if(findDistance(stationRad, pilotRad, false) <89){
 			return "FROM";
@@ -81,9 +90,9 @@ public class VOR {
 	 * @param update whether to update side variable 
 	 * @return
 	 */
-	public int findDistance(int deg1, int deg2, boolean update){
-		int posD = Integer.MIN_VALUE;
-		int negD = Integer.MIN_VALUE;
+	public double findDistance(double deg1, double deg2, boolean update){
+		double posD = Double.MIN_VALUE;
+		double negD = Double.MIN_VALUE;
 		//same degree distance must be 0
 		if(deg2 == deg1){
 			return 0;
@@ -115,7 +124,7 @@ public class VOR {
 	}
 	
 	/**
-	 * Print the input/calculated values
+	 * Prdouble the input/calculated values
 	 */
 	public void print(){
 		System.out.println("------------------------");
