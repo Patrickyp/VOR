@@ -79,7 +79,7 @@ class update extends Thread{
 			//radio Radial, station code, signal Quality, pilot Radial
 			int ID = rad.getID(); String sigQ = rad.getSigQual(); double radi = rad.getRadial();
 			System.out.println("**DEBUG** ID = " + ID + " Quality = " + sigQ + " Radial " + radi);
-			myvor.newSignal(radi, rad.getID(), rad.getSigQual(), global.getDegree(0, global.offset));
+			myvor.newSignal(radi, ID, sigQ, global.getDegree(0, global.offset));
 			//update global variables
 			global.bar = myvor.side * myvor.degOffset;
 			global.ID = myvor.stationCode;
